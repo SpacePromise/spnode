@@ -163,7 +163,7 @@ namespace spnode
         private void StartBoltServer(CancellationToken cancellationToken)
         {
             this.boltServer = new BoltServer();
-            this.boltServer.Start(47554, cancellationToken);
+            this.boltServer.Start(cancellationToken);
         }
 
         public void Stop()

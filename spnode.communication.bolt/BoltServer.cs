@@ -11,7 +11,7 @@ namespace spnode.communication.bolt
 {
     public class BoltServer
     {
-        public void Start(int port, CancellationToken cancellationToken = default)
+        public void Start(CancellationToken cancellationToken = default)
         {
             Task.Run(async () =>
             {
@@ -34,7 +34,6 @@ namespace spnode.communication.bolt
                         .UseContentRoot(contentPath)
                         .UseSetting(WebHostDefaults.DetailedErrorsKey, true.ToString())
                         .UseConfiguration(config)
-                        .UseUrls($"https://+:{port}")
                         .ConfigureServices(s => s.AddSingleton(config))
                         .UseSerilog(boltLogger, true)
                         .UseContentRoot(contentRoot)
@@ -43,7 +42,7 @@ namespace spnode.communication.bolt
 
                     try
                     {
-                        boltLogger.Information("Starting on port: {BoltPort} ...", port);
+                        boltLogger.Information("Starting Bolt...");
                         await host.StartAsync(cancellationToken);
                     }
                     catch (Exception ex)

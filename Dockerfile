@@ -3,6 +3,7 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY NuGet.Config ./
+COPY *.sln .
 COPY spnode.app.docker/*.csproj ./spnode.app.docker/
 COPY spnode/*.csproj ./spnode/
 COPY spnode.communication.bolt/*.csproj ./spnode.communication.bolt/
